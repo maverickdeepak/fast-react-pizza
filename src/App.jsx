@@ -10,7 +10,7 @@ import Error from "./ui/Error.jsx";
 const router = createBrowserRouter([
     {
         element: <AppLayout/>,
-        errorElement: <Error />,
+        errorElement: <Error/>,
 
         children: [
             {
@@ -21,7 +21,7 @@ const router = createBrowserRouter([
                 path: '/menu',
                 element: <Menu/>,
                 loader: menuLoader,
-                errorElement: <Error />,
+                errorElement: <Error/>,
             },
             {
                 path: '/cart',
