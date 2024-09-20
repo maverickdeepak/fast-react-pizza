@@ -7,6 +7,9 @@ export default {
     fontFamily: {
       sans: 'Nunito Sans, sans-serif',
     },
+    height: {
+      screen: '100dvh',
+    },
   },
   plugins: [],
 };
