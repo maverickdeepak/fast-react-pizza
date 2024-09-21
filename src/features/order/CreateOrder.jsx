@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Form, redirect, useActionData, useNavigation } from 'react-router-dom';
 import { createOrder } from '../../services/apiRestaurant.js'; // https://uibakery.io/regex-library/phone-number
 import { Button } from '../../ui/Button.jsx';
@@ -35,14 +36,22 @@ const fakeCart = [
 
 function CreateOrder() {
   const username = useSelector((state) => state.user.username);
+  const cart = useSelector((state) => state.cart.cart);
+
   const navigation = useNavigation();
   const isSubmitting = navigation.state === 'submitting';
 
   const formErrors = useActionData();
 
-  // const [withPriority, setWithPriority] =
-  // useState(false);
-  const cart = fakeCart;
+  const [withPriority, setWithPriority] = useState(false);
+  // const cart = fakeCart;
+
+  // const modifiedCart = {
+  //   ...cart,
+  //   withPriority,
+  // };
+
+  // console.log(modifiedCart);
 
   return (
     <div className="px-4 py-6">
@@ -91,9 +100,8 @@ function CreateOrder() {
             name="priority"
             id="priority"
             className="ocus:outline-none h-6 w-6 accent-violet-400 focus:ring focus:ring-violet-400 focus:ring-offset-2"
-            // value={withPriority}
-            // onChange={(e) =>
-            // setWithPriority(e.target.checked)}
+            value={withPriority}
+            onChange={(e) => setWithPriority(e.target.checked)}
           />
           <label htmlFor="priority" className="font-medium">
             Want to yo give your order priority?
